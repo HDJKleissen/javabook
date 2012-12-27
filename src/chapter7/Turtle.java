@@ -8,7 +8,7 @@ import java.util.*;
 public class Turtle extends JFrame implements ActionListener
 {
 	private JButton forward, turnR, turnL, penUpB, penDownB, reset;
-	private JTextField forwField;
+	private JTextField forwField, dirField;
 	private JPanel panel;
 	
 	private ArrayList <String> x1List = new ArrayList<String>();
@@ -64,6 +64,9 @@ public class Turtle extends JFrame implements ActionListener
 		reset = new JButton("Reset");
 		window.add(reset);
 		reset.addActionListener(this);
+		
+		dirField = new JTextField(6);
+		window.add(dirField);
 	}
 
 	public void drawTri(Graphics g)
@@ -79,6 +82,7 @@ public class Turtle extends JFrame implements ActionListener
 					g.fillOval(x,y,2,2);
 				}
 				g.fillOval(x,y-9,2,2);
+				dirField.setText("NORTH");				
 				break;
 				
 			case 90:
@@ -90,6 +94,7 @@ public class Turtle extends JFrame implements ActionListener
 					g.fillOval(x,y,2,2);
 				}
 				g.fillOval(x+8,y,2,2);
+				dirField.setText("EAST");
 				break;
 			
 			case 180:
@@ -101,6 +106,7 @@ public class Turtle extends JFrame implements ActionListener
 					g.fillOval(x,y,2,2);
 				}
 				g.fillOval(x,y+8,2,2);
+				dirField.setText("SOUTH");
 				break;
 			
 			case 270:
@@ -112,6 +118,7 @@ public class Turtle extends JFrame implements ActionListener
 					g.fillOval(x,y,2,2);
 				}
 				g.fillOval(x-9,y,2,2);
+				dirField.setText("WEST");
 				break;
 		}
 	}
@@ -201,6 +208,8 @@ public class Turtle extends JFrame implements ActionListener
 		}
 		drawLines(g);
 		drawTri(g);
+		
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) 
